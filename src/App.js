@@ -6,14 +6,21 @@ import Addstudent from './Components/Addstudent';
 import Searchstudent from './Components/Searchstudent';
 import Addfaculties from './Components/Addfaculties';
 import Searchfaculties from './Components/Searchfaculties';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
     <div>
-      <Addstudent/>
-      <Searchstudent/>
-      <Addfaculties/>
-      <Searchfaculties/>
+      <BrowserRouter>
+      <Routes>
+        <Route path="/" exact element={<Addstudent/>}/>
+        <Route path="/addfacu" exact element={<Addfaculties/>}/>
+        <Route path="/search" exact element={<Searchstudent/>}/>
+        <Route path="/searchfacu" exact element={<Searchfaculties/>}/>
+        <Route path="/viewstud" exact element/>
+        <Route path="/viewfacu" exact element/>
+      </Routes>
+      </BrowserRouter>
 
     </div>
   );
