@@ -61,9 +61,9 @@ const Viewstudent = () => {
     <tr>
       <th scope="col">ADMISSION NUMBER</th>
       <th scope="col">ROLL NUMBER</th>
-      <th scope="col">NANE</th>
+      <th scope="col">NAME</th>
       <th scope="col">CLASS</th>
-      <th  scope="col">PARENT NANE</th>
+      <th  scope="col">PARENT NAME</th>
       <th scope="col">MOBILE </th>
       <th scope="col">ADDRESS</th>
     </tr>
