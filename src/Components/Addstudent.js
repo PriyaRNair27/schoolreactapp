@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Header from './Header'
 
 const Addstudent = () => {
-    var [admno,setadmno]=useState("")
+    var [admin,setadmno]=useState("")
     var [rollno,setrollno]=useState("")
     var [name,setname]=useState("")
     var [clas,setclas]=useState("")
@@ -11,9 +11,9 @@ const Addstudent = () => {
     var [mobile,setmobile]=useState("")
     var [address,setaddress]=useState("")
     const subdata=()=>{
-        const data={"admno":admno,"rollno":rollno,"name":name,"clas":clas,"parentname":parentname,"mobile":mobile,"address":address}
+        const data={"admin":admin,"rollno":rollno,"name":name,"clas":clas,"parentname":parentname,"mobile":mobile,"address":address}
         console.log(data)
-    axios.post("https://mylinkurcodesapp.herokuapp.com/addcourse",data).then(
+    axios.post("http://localhost:5000/api/schoolmanage",data).then(
         (response)=>
         {
             console.log(response.data)

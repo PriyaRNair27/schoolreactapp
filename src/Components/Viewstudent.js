@@ -1,53 +1,34 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import Header from './Header'
 
 const Viewstudent = () => {
-    var viewli=[
-        {
-            "admno":"111",
-            "rollno":"1",
-            "name":"anuraj",
-            "class":"12",
-            "parentname":"rajendran",
-            "mobile":"9078864564",
-            "address":"raj vila"
-        },
-        {
-            "admno":"112",
-            "rollno":"2",
-            "name":"manu",
-            "class":"12",
-            "parentname":"radhakrishnam",
-            "mobile":"8067864564",
-            "address":"dream house"
-        },
-        {
-            "admno":"113",
-            "rollno":"3",
-            "name":"praveena",
-            "class":"12",
-            "parentname":"prakash",
-            "mobile":"7578864564",
-            "address":"veena vila"
-        },{
-            "admno":"114",
-            "rollno":"4",
-            "name":"mohan",
-            "class":"11",
-            "parentname":"rajendran",
-            "mobile":"9078864564",
-            "address":"malayil house"
-        },
-        {
-            "admno":"115",
-            "rollno":"5",
-            "name":"sreeram",
-            "class":"12",
-            "parentname":"rajeev",
-            "mobile":"9078864564",
-            "address":"sreeram vila"
-        }
-    ]
+  var  [viewlist,setviewlist]=useState([])
+ 
+  axios.get("http://localhost:5000/api/school").then(
+      (response)=>{
+  
+          console.log(response.data)
+          setviewlist(response.data.data) 
+         
+      })
+      const deleteApiCall=(id)=>{
+        const data={"_id":id}
+       console.log(data)
+       axios.post("http://localhost:5000/api/studentdelete",data).then((response)=>
+       {
+           if(response.data.status=="success")
+           {
+               alert("success")
+           }
+           else
+           {
+               alert("error")
+           }
+       })
+      
+   }
+   
   return (
     <div>
          <Header/>
@@ -70,15 +51,17 @@ const Viewstudent = () => {
   </thead>
   <tbody>
     
-        {viewli.map((value,key)=>{
+        {viewlist.map((value,key)=>{
            return <tr>
-                <td>{value.admno}</td>
+                <td>{value.admin}</td>
       <td>{value.rollno}</td>
       <td>{value.name}</td>
-      <td>{value.class}</td>
+      <td> {value.clas}</td>
       <td>{value.parentname}</td>
       <td>{value.mobile}</td>
       <td>{value.address}</td>
+      <td><button   onClick={()=>{deleteApiCall(value._id)}} className="bt btn-success">DELETE</button>
+</td>
       </tr>
         })}
      

@@ -13,10 +13,10 @@ const Addfaculties = () => {
     const subdata=()=>{
         const data={"name":name,"education":education,"mobile":mobile,"address":address,"pincode":pincode,"district":district}
         console.log(data)
-    axios.post("https://mylinkurcodesapp.herokuapp.com/addcourse",data).then(
+    axios.post("http://localhost:5000/api/facultymanage",data).then(
         (response)=>
         {
-            console.log(response.data)
+            console.log(response.data.data)
             if(response.data.status=="success")
             {
                 alert("successfully inserted")
